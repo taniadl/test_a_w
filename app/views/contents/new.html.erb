@@ -1,0 +1,7 @@
+<%= simple_form_for @content , method: :post do |f| %>
+  <%= f.input :title %>
+  <%= f.label :type  %>
+  <%= f.select :type, Content.types.keys %>
+  <%= f.button :submit %>
+<% end %>
+
