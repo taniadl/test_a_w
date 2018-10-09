@@ -47,8 +47,8 @@ gem 'jquery-rails'
 gem "simple_token_authentication"
 #simple_form
 gem "simple_form"
-
-
+#for keys
+gem 'dotenv-rails', groups: [:development, :test]
 
 
 
