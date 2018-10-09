@@ -1,5 +1,6 @@
 <% @projects.each do |project| %>
 <%= project.title %>
 <%= project.description %>
-<%= project.thumbnail%>
+<%= cl_image_tag project.photo %>
 <% end %>
+<!-- current user-->
