@@ -1,5 +1,5 @@
 class ContentsController < ApplicationController
-  before_action :set_contentm, only: [:edit, :update, :destroy]
+  before_action :set_content, only: [:edit, :update, :destroy, :show]
   def index
     @contents = Content.all
   end
@@ -14,6 +14,9 @@ class ContentsController < ApplicationController
       render :show
     else
     end
+  end
+
+  def show
   end
 
   def edit

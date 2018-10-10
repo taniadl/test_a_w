@@ -53,6 +53,7 @@ gem 'dotenv-rails', groups: [:development, :test]
 gem 'cloudinary'
 #carrierwave
 gem 'carrierwave', '~> 1.2'
+#pundit
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
