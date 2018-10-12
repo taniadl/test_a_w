@@ -1,5 +1,5 @@
 <% @projects.each do |project| %>
-<%= project.title %>
+<%= link_to project.title.capitalize, project_path(project) %>
 <%= project.description %>
 <%= cl_image_tag project.photo %>
 <% project.contents.each do |contents| %>
