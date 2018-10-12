@@ -1,8 +1,6 @@
 class ContentsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
   before_action :set_content, only: [:edit, :update, :destroy, :show]
-
-
   def show
   end
 

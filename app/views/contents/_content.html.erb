@@ -3,5 +3,7 @@
 <%= content.type  %>
 <%= time_ago_in_words(content.created_at)  %></p>
 
+<% if user_signed_in? %>
 <%=  link_to 'Edit', edit_project_content_path(content.project, content) %>
 <%=  link_to 'Delete', [content.project, content], method: :delete, data: {confirm: 'Are you sure'}  %>
+<% end %>
