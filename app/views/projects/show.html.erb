@@ -1,1 +1,11 @@
-<h1><% @project.title %></h1>
+<h1><%= @project.title %></h1>
+<%= @project.title %>
+<%= @project.description %>
+<%= cl_image_tag @project.photo %>
+
+
+<h4> Contents </h4>
+<%= render @project.contents  %>
+
+<h4>Add contents</h4>
+<%= render 'contents/form'  %>

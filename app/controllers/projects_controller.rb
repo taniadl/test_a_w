@@ -1,5 +1,7 @@
 class ProjectsController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:index, :show]
   before_action :set_project, only: [:show]
+
   def index
     @projects = Project.all
   end
@@ -8,14 +10,19 @@ class ProjectsController < ApplicationController
     @project = Project.new
   end
 
-  def create
-    @project = Project.new(project_params)
-    if @project.save
-      render :show
-    end
+  def show
+
   end
 
-  def show
+  def create
+
+    @project = Project.new(project_params)
+    @project.user = current_user
+    if @project.save
+      render :show
+    else
+      render :new
+    end
   end
 
   private

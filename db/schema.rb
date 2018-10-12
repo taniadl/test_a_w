@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_10_052301) do
+ActiveRecord::Schema.define(version: 2018_10_12_121033) do
 
   create_table "contents", force: :cascade do |t|
     t.string "title"
@@ -18,16 +18,13 @@ ActiveRecord::Schema.define(version: 2018_10_10_052301) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "project_id"
+    t.integer "user_id"
     t.index ["project_id"], name: "index_contents_on_project_id"
+    t.index ["user_id"], name: "index_contents_on_user_id"
   end
 
-  create_table "projects", force: :cascade do |t|
-    t.string "title"
-    t.string "description"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "photo"
-  end
+# Could not dump table "projects" because of following StandardError
+#   Unknown type 'referenes' for column 'user'
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false

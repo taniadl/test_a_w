@@ -1,7 +1,9 @@
 class ContentsController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:index, :show]
   before_action :set_content, only: [:edit, :update, :destroy, :show]
-  def index
-    @contents = Content.all
+
+
+  def show
   end
 
   def new
@@ -9,32 +11,38 @@ class ContentsController < ApplicationController
   end
 
   def create
-    @content = Content.new(content_params)
+    @project = Project.find(params[:project_id])
+    @content = @project.contents.new(content_params)
+    @content.user = current_user
     if @content.save
-      render :show
-    else
+      redirect_to project_path(@project)
     end
   end
 
-  def show
-  end
-
   def edit
+     @project= Project.find(params[:project_id])
+    @content = @project.contents.find(params[:id])
   end
 
   def update
-    @content = Content.update(content_params)
-    if @content.save
-      render :show
+    @project = Project.find(params[:project_id])
+    @content = @project.contents.find(params[:id])
+    if @content.update_attributes(content_params)
+      redirect_to project_path(@project)
     else
+      render :edit
     end
   end
 
   def destroy
+    @project= Project.find(params[:project_id])
+    @content = @project.contents.find(params[:id])
     @content.destroy
+
+    redirect_to project_path(@project)
   end
 
-  private
+private
 
   def set_content
     @content = Content.find(params[:id])

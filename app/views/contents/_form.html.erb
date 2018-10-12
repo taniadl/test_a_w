@@ -1,0 +1,6 @@
+  <%= simple_form_for([@project, @project.contents.build])  do |f| %>
+    <%= f.input :title %>
+    <%= f.label :type  %>
+    <%= f.select :type, Content.types%>
+    <%= f.button :submit %>
+  <% end %>
