@@ -3,7 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   acts_as_token_authenticatable
   has_many :projects
-  has_many :contents
+  has_many :contents, through: :projects
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 end

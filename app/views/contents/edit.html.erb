@@ -1,7 +1,6 @@
-  <%= simple_form_for([@project , @project.contents.find(params[:id])]) do |f| %>
+  <%= simple_form_for([@content.project, @content])  do |f| %>
     <%= f.input :title %>
     <%= f.label :type  %>
     <%= f.select :type, Content.types%>
     <%= f.button :submit %>
   <% end %>
-

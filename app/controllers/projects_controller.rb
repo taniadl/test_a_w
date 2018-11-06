@@ -1,25 +1,29 @@
 class ProjectsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
   before_action :set_project, only: [:show]
-  skip_after_action :verify_policy_scoped, only: [:index]
+
 
   def index
-    @projects = Project.all
+    @projects = policy_scope(Project)
   end
 
   def new
     @project = Project.new
+    authorize @project
   end
 
   def show
-            skip_authorization
+    @content = Content.new
+        @content.project_id = @project.id
 
-  end
+    end
 
   def create
-
     @project = Project.new(project_params)
+        @content = @project.contents.build
+
     @project.user = current_user
+    authorize @project
     if @project.save
       render :show
     else
@@ -31,6 +35,7 @@ class ProjectsController < ApplicationController
 
   def set_project
     @project = Project.find(params[:id])
+    authorize @project
   end
 
   def project_params

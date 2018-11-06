@@ -1,0 +1,15 @@
+<div>
+  <h4> Content</h4>
+  <% @project.contents.each do |content| %>
+
+    <%= content.title %>
+    <%= content.type  %>
+
+    <% if policy(content).edit? %>
+  <%= link_to "Edit", edit_project_content_path( content.project, content)  %>
+  <% end %>
+  <% if policy(content).destroy? %>
+  <%= link_to "Delete", project_content_path(content.project, content), method: :delete , data: {confirm: 'Are you sure?' } %>
+  <% end %>
+  <% end %>
+</div>
