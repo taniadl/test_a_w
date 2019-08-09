@@ -14,13 +14,12 @@ class ProjectsController < ApplicationController
 
   def show
     @content = Content.new
-        @content.project_id = @project.id
-
-    end
+    @content.project_id = @project.id
+  end
 
   def create
     @project = Project.new(project_params)
-        @content = @project.contents.build
+    @content = @project.contents.build
 
     @project.user = current_user
     authorize @project

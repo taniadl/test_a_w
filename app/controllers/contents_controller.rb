@@ -2,7 +2,6 @@ class ContentsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
 
   def show
-
   end
 
   def new
@@ -49,6 +48,6 @@ class ContentsController < ApplicationController
 private
 
   def content_params
-    params.require(:content).permit(:title, :type)
+    params.require(:content).permit(:title, :type, :project_id)
   end
 end

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'ingredients/index'
   devise_for :users
   get 'pages/contact', to: 'pages#contact', as: :contact
   get 'pages/about', to: 'pages#about', as: :about
