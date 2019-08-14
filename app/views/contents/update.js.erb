@@ -1,0 +1,3 @@
+$('.simple_form.edit_content').remove();
+$('.edit-form').show();
+$('.edit_row').find('td:first').text('<%= raw @content.title %>').next().text('<%= raw @content.type %>');

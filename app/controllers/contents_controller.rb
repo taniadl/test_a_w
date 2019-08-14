@@ -23,16 +23,26 @@ class ContentsController < ApplicationController
     @content = Content.find(params[:id])
     @content.project_id = params[:project_id]
     authorize @content
+    respond_to do |format|
+      format.js
+    end
   end
 
   def update
      @content = Content.find(params[:id])
     @content.project_id = params[:project_id]
     authorize @content
-    if @content.update_attributes(content_params)
-      redirect_to project_path(@content.project)
-    else
-      render :edit
+    respond_to do |format|
+      if @content.update_attributes(content_params)
+          format.html
+
+          format.js { }
+          format.json { head :no_content }
+
+      else
+        puts @content.errors.full_messages
+        redirect_to :new
+      end
     end
   end
 

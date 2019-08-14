@@ -1,0 +1,8 @@
+  <%= simple_form_for([@content.project, @content], remote: true) do |f| %>
+  <h3><mark>We are here to help you, update your information here :)</mark></h3>
+
+    <%= f.input :title%>
+    <%= f.label :type  %>
+    <%= f.select :type, Content.types%>
+    <%= f.button :submit %>
+  <% end %>

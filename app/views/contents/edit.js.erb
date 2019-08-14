@@ -1,0 +1,7 @@
+$('.simple_form.edit_content').remove();
+$('.edit-form').hide().after("<%= j render 'edit' %>");
+$('tr').find('td:first').each(function(){
+  if($(this).text() == ( '<%= raw @content.title %>')) {
+    $(this).parent().addClass('edit_row');
+  }
+});

@@ -1,15 +1,20 @@
 <div>
-  <h4> Content</h4>
+  <h4 class="content_list"> Content</h4>
+  <div class="edit-form"></div>
+   <table>
+
   <% @project.contents.each do |content| %>
 
-    <%= content.title %>
-    <%= content.type  %>
+    <tr><td><%= content.title %></td>
+    <td><%= content.type  %></td>
+    <td><% if policy(content).edit? %>
+      <%= link_to "Edit", edit_project_content_path( content.project, content), remote: true %>
+    <% end %></td>
+    <td><% if policy(content).destroy? %>
+      <%= link_to "Delete", project_content_path(content.project, content), method: :delete , data: {confirm: 'Are you sure?' } %></tr></td>
+    <% end %>
 
-    <% if policy(content).edit? %>
-  <%= link_to "Edit", edit_project_content_path( content.project, content)  %>
   <% end %>
-  <% if policy(content).destroy? %>
-  <%= link_to "Delete", project_content_path(content.project, content), method: :delete , data: {confirm: 'Are you sure?' } %>
-  <% end %>
-  <% end %>
+     <table>
+
 </div>
